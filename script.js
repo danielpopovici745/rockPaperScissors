@@ -22,24 +22,42 @@ function computerPlay(randomInt){
 
 //create a function that generates a random integer 0-2 inclusive
 function random(){
-    return Math.round(Math.random()*2);
+    return Math.floor(Math.random()*3);
 }
 
 function playerSelection(){
-    let response = prompt("Rock,Paper,or Scissors!").toLowerCase();
-    return response.charAt(0).toUpperCase() + response.slice(1);
+    let response = prompt("Rock,Paper,or Scissors!");
+    let lwrCaseResponse = response.toLowerCase();
+    return lwrCaseResponse.charAt(0).toUpperCase() + lwrCaseResponse.slice(1);
 }
 //create a function that takes 2 parameters playerSelection and computerSelection then returns if the user won or lost
 function roundRPS(playerSelection,computerSelection){
     // use a switch statement with nested if statements that check if the player selection wins, ties or losses against the computer selection
-    switch(playerSelection.toLowerCase()){
-        case "rock":
+    switch(playerSelection){
+        case "Rock":
             if(computerSelection === 'Rock'){
-                console.log("You draw!" + playerSelection + " ties with " + computerSelection); 
+                console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
             }
             else{
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
             }
+            break;
+        case "Paper":
+            if(computerSelection === 'Paper'){
+                console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+            }
+            else{
+                console.log("You win! " + playerSelection +" beats " + computerSelection);
+            }
+            break;
+        case "Scissors":
+            if(computerSelection === 'Scissors'){
+                console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+            }
+            else{
+                console.log("You win! " + playerSelection +" beats " + computerSelection);
+            }
+            break;
     }
 }
 
