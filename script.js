@@ -1,18 +1,20 @@
 // create a function that is the 'computer' for the user to play against
 function computerPlay(randomInt){
     
-    //using a switch statement to check what number randomInt equals then either deciding to return rock paper or scissors
-
+    //using a switch statement to decide to return rock paper or scissors based on randomInt
     switch(randomInt){
         case 0:
-            return "Rock"
-            break;
+            console.log("Rock");
+            return "Rock";
+            
         case 1:
-            return "Paper"
-            break;
+            console.log("Paper");
+            return "Paper";
+            
         case 2:
-            return "Scissors"
-            break;
+            console.log("Scissors");
+            return "Scissors";
+            
     }
     
     
@@ -22,8 +24,25 @@ function computerPlay(randomInt){
 function random(){
     return Math.round(Math.random()*2);
 }
-computerPlay(random());
-// have the function randomly return either rock, paper, or scissors
+
+function playerSelection(){
+    let response = prompt("Rock,Paper,or Scissors!").toLowerCase();
+    return response.charAt(0).toUpperCase() + response.slice(1);
+}
 //create a function that takes 2 parameters playerSelection and computerSelection then returns if the user won or lost
+function roundRPS(playerSelection,computerSelection){
+    // use a switch statement with nested if statements that check if the player selection wins, ties or losses against the computer selection
+    switch(playerSelection.toLowerCase()){
+        case "rock":
+            if(computerSelection === 'Rock'){
+                console.log("You draw!" + playerSelection + " ties with " + computerSelection); 
+            }
+            else{
+                console.log("You win! " + playerSelection +" beats " + computerSelection);
+            }
+    }
+}
+
+roundRPS(playerSelection(),computerPlay(random()));
 //make the userSelection case-insensitive, roCk RocK ROCK should all equal Rock
 //create a function called game() that keeps track of a 5 round game of rock paper scissors
