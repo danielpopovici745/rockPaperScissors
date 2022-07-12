@@ -26,9 +26,12 @@ function random(){
 }
 
 function playerSelection(){
-    let response = prompt("Rock,Paper,or Scissors!");
-    let lwrCaseResponse = response.toLowerCase();
-    return lwrCaseResponse.charAt(0).toUpperCase() + lwrCaseResponse.slice(1);
+    let response = prompt("Rock,Paper,or Scissors!").toLowerCase();
+    while(response != "rock" && response != "paper" && response != "scissors"){
+        response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!").toLowerCase();
+    }
+    
+    return response.charAt(0).toUpperCase() + response.slice(1);
 }
 //create a function that takes 2 parameters playerSelection and computerSelection then returns if the user won or lost
 function roundRPS(playerSelection,computerSelection){
