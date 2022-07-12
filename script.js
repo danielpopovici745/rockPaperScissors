@@ -4,15 +4,12 @@ function computerPlay(randomInt){
     //using a switch statement to decide to return rock paper or scissors based on randomInt
     switch(randomInt){
         case 0:
-            console.log("Rock");
             return "Rock";
             
         case 1:
-            console.log("Paper");
             return "Paper";
             
         case 2:
-            console.log("Scissors");
             return "Scissors";
             
     }
@@ -26,13 +23,31 @@ function random(){
 }
 
 function playerSelection(){
-    let response = prompt("Rock,Paper,or Scissors!").toLowerCase();
-    while(response != "rock" && response != "paper" && response != "scissors"){
-        response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!").toLowerCase();
+    let response = prompt("Rock,Paper,or Scissors!");
+
+    while(!validResponse(response.toLowerCase())){
+        response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!");
+        if(response == null){
+            break;
+        }
+        console.log(response);
     }
+    
+    if(response == null){
+        window.alert('Game Closing. Refresh to try again')
+        return;
+    }
+
+    response = response.toLowerCase();
     
     return response.charAt(0).toUpperCase() + response.slice(1);
 }
+
+//create a function that checks if the user input is equal to rock paper or scissors
+
+validResponse = response =>
+response == "rock" ? true : response == "paper" ? true : response == "scissors" ? true : false
+
 //create a function that takes 2 parameters playerSelection and computerSelection then returns if the user won or lost
 function roundRPS(playerSelection,computerSelection){
     // use a switch statement with nested if statements that check if the player selection wins, ties or losses against the computer selection
@@ -40,6 +55,9 @@ function roundRPS(playerSelection,computerSelection){
         case "Rock":
             if(computerSelection === 'Rock'){
                 console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+            }
+            else if(computerSelection == 'Paper'){
+                console.log("You lose! " + computerSelection +" beats " + playerSelection);
             }
             else{
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
@@ -49,6 +67,9 @@ function roundRPS(playerSelection,computerSelection){
             if(computerSelection === 'Paper'){
                 console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
             }
+            else if(computerSelection === 'Scissors'){
+                console.log("You lose! " + computerSelection + " beats " + playerSelection);
+            }
             else{
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
             }
@@ -57,10 +78,15 @@ function roundRPS(playerSelection,computerSelection){
             if(computerSelection === 'Scissors'){
                 console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
             }
+            else if(computerSelection === 'Rock'){
+                console.log("You lose! " + computerSelection + " beats " + playerSelection);
+            }
             else{
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
             }
             break;
+        default:
+            return;
     }
 }
 
