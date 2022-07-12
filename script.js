@@ -43,8 +43,7 @@ function playerSelection(){
     return response.charAt(0).toUpperCase() + response.slice(1);
 }
 
-//create a function that checks if the user input is equal to rock paper or scissors
-
+//create a function that checks if the user input is equal to rock paper or scissors or else return false
 validResponse = response =>
 response == "rock" ? true : response == "paper" ? true : response == "scissors" ? true : false
 
