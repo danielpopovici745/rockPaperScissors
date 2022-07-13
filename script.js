@@ -76,23 +76,29 @@ function roundRPS(playerSelection,computerSelection){
         case "Rock":
             if(computerSelection === 'Rock'){
                 console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+                return 0;
             }
             else if(computerSelection == 'Paper'){
                 console.log("You lose! " + computerSelection +" beats " + playerSelection);
+                return 1;
             }
             else{
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
+                return 2;
             }
             break;
         case "Paper":
             if(computerSelection === 'Paper'){
                 console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+                return 0;
             }
             else if(computerSelection === 'Scissors'){
                 console.log("You lose! " + computerSelection + " beats " + playerSelection);
+                return 1;
             }
             else{
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
+                return 2;
             }
             break;
         case "Scissors":
@@ -109,6 +115,20 @@ function roundRPS(playerSelection,computerSelection){
     }
 }
 
-roundRPS(playerSelection(),computerPlay(random()));
 
-//create a function called game() that keeps track of a 5 round game of rock paper scissors
+
+//create a function called game() that calls roundRPS() for a best of 5 game (first to 3 wins)
+
+function gameBestOfFive(){
+    //create a for loop to keep track of which round the player is on. If the player hits cancel in the playerSelection() prompt then the game will close. 
+    
+    for(let i = 1; i<=5;i++){
+        result = roundRPS(playerSelection(),computerPlay(random()));
+        
+        //create a switch statement that checks the result of a single round. if the result is 0 then the player drawed. if the result is 1 the player lost. If the result is 2 the player won.
+
+        
+
+    }
+
+}
