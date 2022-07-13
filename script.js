@@ -22,34 +22,56 @@ function random(){
     return Math.floor(Math.random()*3);
 }
 
+//make the playerSelection case-insensitive, roCk RocK ROCK should all equal Rock
 function playerSelection(){
     let response = prompt("Rock,Paper,or Scissors!");
 
-    while(!validResponse(response.toLowerCase())){
-        response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!");
-        if(response == null){
-            break;
-        }
-        console.log(response);
-    }
-    
+    //If the user hits cancel when the prompt shows up it will alert the user they cancelled the game and will tell them to refresh to try again.
+
     if(response == null){
         window.alert('Game Closing. Refresh to try again')
         return;
     }
+    else{
+        response = response.toLowerCase();
+    }
 
-    response = response.toLowerCase();
+    // This while loop calls validResponse() with an argument of response. If the user keeps entering an invalid input the program will continue trying to get a valid response unless the user hits cancel then the game will close
+
+    while(!validResponse(response)){
+        response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!");
+        if(response == null){
+            window.alert('Game Closing. Refresh to try again')
+            return;
+        }
+        else{
+            response = response.toLowerCase();
+        }
+    }
     
-    return response.charAt(0).toUpperCase() + response.slice(1);
+    
+    response = response.charAt(0).toUpperCase() + response.slice(1);
+    return response;
 }
 
 //create a function that checks if the user input is equal to rock paper or scissors or else return false
+
 validResponse = response =>
 response == "rock" ? true : response == "paper" ? true : response == "scissors" ? true : false
 
 //create a function that takes 2 parameters playerSelection and computerSelection then returns if the user won or lost
+
 function roundRPS(playerSelection,computerSelection){
-    // use a switch statement with nested if statements that check if the player selection wins, ties or losses against the computer selection
+    // checks if playerSelection is undefined before I tell the user their selection. If the user hits cancel in the playerFunction() prompt then roundRPS will return undefined which will close the game.
+    if (playerSelection === undefined){
+        return;
+    }
+    else{
+        console.log('You selected '+ playerSelection);
+    }
+
+    // use a switch statement with nested if statements that check if the player selection wins, ties or lost against the computer selection
+
     switch(playerSelection){
         case "Rock":
             if(computerSelection === 'Rock'){
@@ -84,11 +106,9 @@ function roundRPS(playerSelection,computerSelection){
                 console.log("You win! " + playerSelection +" beats " + computerSelection);
             }
             break;
-        default:
-            return;
     }
 }
 
 roundRPS(playerSelection(),computerPlay(random()));
-//make the userSelection case-insensitive, roCk RocK ROCK should all equal Rock
+
 //create a function called game() that keeps track of a 5 round game of rock paper scissors
