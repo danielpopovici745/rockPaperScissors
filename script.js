@@ -4,7 +4,7 @@
 
 function computerPlay(randomInt){
     
-    //using a switch statement to decide to return rock paper or scissors based on randomInt
+    //decide to return rock paper or scissors based on randomInt
 
     switch(randomInt){
         case 0:
@@ -19,13 +19,11 @@ function computerPlay(randomInt){
     }
 }
 
-//create a function that generates a random integer 0-2 inclusive
+//generates a random integer 0-2 inclusive
 
 function random(){
     return Math.floor(Math.random()*3);
 }
-
-//make the playerSelection() case-insensitive, roCk RocK ROCK should all equal Rock
 
 function playerSelection(){
     let response = prompt("Rock,Paper,or Scissors!");
@@ -40,7 +38,8 @@ function playerSelection(){
         response = response.toLowerCase();
     }
 
-    // This while loop calls validResponse() with an argument of response. If the user keeps entering an invalid input the program will continue trying to get a valid response unless the user hits cancel then the game will close or enters a valid response.
+    /* If the user keeps entering an invalid input the program will continue
+    trying to get a valid response unless the user hits cancel*/
 
     while(!validResponse(response)){
         response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!");
@@ -58,16 +57,16 @@ function playerSelection(){
     return response;
 }
 
-//create a function that checks if the user input is equal to rock paper or scissors or else return false
+//checks if the user input is equal to rock paper or scissors or else return false
 
 validResponse = response =>
 response == "rock" ? true : response == "paper" ? true : response == "scissors" ? true : false
 
-//create a function that takes 2 parameters playerSelection and computerSelection then returns if the user won or lost that round
+//returns if the user won or lost a round
 
 function roundRPS(playerSelection,computerSelection){
 
-    // checks if playerSelection is undefined before I tell the user their selection. If the user hits cancel in the playerFunction() prompt then roundRPS will return undefined which will close the game.
+    //If the user hits cancel in the playerFunction() prompt then roundRPS will return undefined which will close the game.
 
     if (playerSelection === undefined){
         return;
@@ -76,7 +75,8 @@ function roundRPS(playerSelection,computerSelection){
         console.log('You selected '+ playerSelection);
     }
 
-    // use a switch statement with nested if statements that check if the player selection wins, ties or lost against the computer selection based on what the player selected in playerSelection()
+    /*check if the player selection wins, ties or lost against the computer
+    selection based on what the player selected in playerSelection()*/
 
     switch(playerSelection){
         case "Rock":
@@ -109,7 +109,7 @@ function roundRPS(playerSelection,computerSelection){
             break;
         case "Scissors":
             if(computerSelection === 'Scissors'){
-                console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+                console.log("You draw! " + playerSelection + " ties with " + computerSelection);
                 return 'Draw';
             }
             else if(computerSelection === 'Rock'){
@@ -124,7 +124,7 @@ function roundRPS(playerSelection,computerSelection){
     }
 }
 
-//create a function called gameBestOfFive() that keeps track of a best of 5 match of rockpaperscissors and lets the user now if they won the match.
+//keeps track of a best of 5 match of rockpaperscissors
 
 function gameBestOfFive(){
     let wins = 0;
@@ -133,15 +133,13 @@ function gameBestOfFive(){
     
     let welcomeMessage = window.alert('Welcome to a Best of 5 Match of Rock, Paper, Scissors. In the next prompt please enter your response.');
     
-    //create a for loop to keep track of which round the player is on. With i being the round which the game is on.
+    //create a for loop to keep track of which round the player is on
 
     for(let i = 1; i<=5;i++){
 
-        //call roundRPS with its necessary arguments and set it equal to result since the return value of roundRPS is required to find out if the user won,drawed,or lost
-
         let result = roundRPS(playerSelection(),computerPlay(random()));
         
-        //create a switch statement that checks the result of a single round. if the result is 'Draw' then the player drawed. if the result is 'Lost' the player lost. If the result is 'Win' the player won.
+        //checks the result of a single round
 
         switch(result){
             case 'Win':
@@ -160,36 +158,33 @@ function gameBestOfFive(){
                 return;
         }
 
-        //Create logic that ends the match if its impossible to draw or win with the remaining amount of rounds left. This can only occur if there are 1 or 2 rounds left in the game. If there were 3 rounds left the most amount of wins you could have is 2, this means the computer can still come back to win or draw. 
+        //Create logic that ends the match if its impossible to draw or win with the remaining amount of rounds left 
 
         let roundsLeft = 5-i;
 
-        //Only 2 roundsLeft in the game i = 3 so 4 rounds have happened
-
         if (roundsLeft == 2){
 
-            // We check if roundsLeft equals 2 (2-1-0 or 0-1-2 or 1-2-0 or 0-2-1 or 3-0-0 or 0-3-0 or 0-0-3). We check if wins or losses equal 3 because 3-0-0 or 0-0-3 leaves the losing side with only 2 rounds left unable to win or draw.
+            /*check if wins or losses equal 3 because 3-0-0 or 0-0-3 leaves 
+            the losing side with only 2 rounds left unable to win or draw*/
 
             if(wins ==3 || losses == 3){
                 break;
             }
         }
-        //Only 1 roundLeft in the game i = 4 so 4 rounds have happened
 
         if(roundsLeft == 1){
             
-            /* First we check if draws = 0(only 1 roundLeft). If it is then we are left with these possibiites (3-0-1 or 1-0-3 or 2-0-2 or ). We check if wins equals 3 to make sure we end the game on 3-0-1 or 1-0-3 because it leaves the losing side with only 1 round unable to win or draw
+            /* must check these conditions to end game if unable to win 
+            or draw state for player or computer*/
 
-            Next, we check if draws = 1 (3-1-0 , 0-1-3 or 2-1-2). We need to make sure wins or losses is 3 then we can safely break the for loop to end the game because 3-1-0 and 0-1-3 is an unwinnable or drawable state for the losing side with only 1 round left.
-            */
+            if((draws == 0 || draws == 1) && (wins == 3 || losses == 3)){
+                
+                break;
 
-            if(draws == 0 || draws == 1){
-                if(wins == 3 || losses == 3){
-                    break;
-                }
             }
         
-            // Finally, we check if draws = 2 (1-2-1 , 2-2-0 , 0-2-2). Here we need to make sure wins or losses equals 2 before ending the game because the losing side cannont draw or win with only 1 round left.
+            /* need to make sure wins or losses equals 2 before ending the game
+            because the losing side cannont draw or win with only 1 round left with 2 draws and wins/losses.*/
 
             else if(draws == 2){                
                 if(wins == 2 || losses == 2){
@@ -200,7 +195,7 @@ function gameBestOfFive(){
 
     }   
 
-     // Once the for loop is finsihed, either 5 rounds are over or the game is an unwinnable and undrawable state the if statements below check to see if wins are greater than losses. if so then the player wins, if not then the player losses. If there are 5 draws or wins are equal to losses then the match is a draw.
+     //if statements below check to see if wins are greater than losses.
 
     if (draws === 5 || wins == losses){
         window.alert('MATCH OVER. DRAW SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
