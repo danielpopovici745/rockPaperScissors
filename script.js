@@ -74,7 +74,7 @@ function roundRPS(playerSelection,randomInt){
     selection based on what the player selected in playerSelection()*/
 
     let div = document.querySelector('#results');
-    console.log(computerSelection);
+
     switch(playerSelection){
         case "Rock":
             if(computerSelection === 'Rock'){
