@@ -126,90 +126,92 @@ function roundRPS(playerSelection,computerSelection){
 
 //keeps track of a best of 5 match of rockpaperscissors
 
-function gameBestOfFive(){
-    let wins = 0;
-    let draws = 0;
-    let losses = 0;
+// function gameBestOfFive(){
+//     let wins = 0;
+//     let draws = 0;
+//     let losses = 0;
     
-    let welcomeMessage = window.alert('Welcome to a Best of 5 Match of Rock, Paper, Scissors. In the next prompt please enter your response.');
+//     let welcomeMessage = window.alert('Welcome to a Best of 5 Match of Rock, Paper, Scissors. In the next prompt please enter your response.');
     
-    //create a for loop to keep track of which round the player is on
+//     //create a for loop to keep track of which round the player is on
 
-    for(let i = 1; i<=5;i++){
+//     for(let i = 1; i<=5;i++){
 
-        let result = roundRPS(playerSelection(),computerPlay(random()));
+//         let result = roundRPS(playerSelection(),computerPlay(random()));
         
-        //checks the result of a single round
+//         //checks the result of a single round
 
-        switch(result){
-            case 'Win':
-                wins +=1;
-                console.log('SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
-                break;
-            case 'Draw':
-                draws +=1
-                console.log('SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
-                break;
-            case 'Loss':
-                losses +=1
-                console.log('SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
-                break;
-            default:
-                return;
-        }
+//         switch(result){
+//             case 'Win':
+//                 wins +=1;
+//                 console.log('SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
+//                 break;
+//             case 'Draw':
+//                 draws +=1
+//                 console.log('SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
+//                 break;
+//             case 'Loss':
+//                 losses +=1
+//                 console.log('SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
+//                 break;
+//             default:
+//                 return;
+//         }
 
-        //Create logic that ends the match if its impossible to draw or win with the remaining amount of rounds left 
+//         //Create logic that ends the match if its impossible to draw or win with the remaining amount of rounds left 
 
-        let roundsLeft = 5-i;
+//         let roundsLeft = 5-i;
 
-        if (roundsLeft == 2){
+//         if (roundsLeft == 2){
 
-            /*check if wins or losses equal 3 because 3-0-0 or 0-0-3 leaves 
-            the losing side with only 2 rounds left unable to win or draw*/
+//             /*check if wins or losses equal 3 because 3-0-0 or 0-0-3 leaves 
+//             the losing side with only 2 rounds left unable to win or draw*/
 
-            if(wins ==3 || losses == 3){
-                break;
-            }
-        }
+//             if(wins ==3 || losses == 3){
+//                 break;
+//             }
+//         }
 
-        if(roundsLeft == 1){
+//         if(roundsLeft == 1){
             
-            /* must check these conditions to end game if unable to win 
-            or draw state for player or computer*/
+//             /* must check these conditions to end game if unable to win 
+//             or draw state for player or computer*/
 
-            if((draws == 0 || draws == 1) && (wins == 3 || losses == 3)){
+//             if((draws == 0 || draws == 1) && (wins == 3 || losses == 3)){
                 
-                break;
+//                 break;
 
-            }
+//             }
         
-            /* need to make sure wins or losses equals 2 before ending the game
-            because the losing side cannont draw or win with only 1 round left with 2 draws and wins/losses.*/
+//             /* need to make sure wins or losses equals 2 before ending the game
+//             because the losing side cannont draw or win with only 1 round left with 2 draws and wins/losses.*/
 
-            else if(draws == 2){                
-                if(wins == 2 || losses == 2){
-                    break;
-                }
-            }
-        }
+//             else if(draws == 2){                
+//                 if(wins == 2 || losses == 2){
+//                     break;
+//                 }
+//             }
+//         }
 
-    }   
+//     }   
 
-     //if statements below check to see if wins are greater than losses.
+//      //if statements below check to see if wins are greater than losses.
 
-    if (draws === 5 || wins == losses){
-        window.alert('MATCH OVER. DRAW SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
-        return;
-    }
-    else if(wins > losses){
-        window.alert('You WON the best of 5 match! SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
-        return;
-    }
-    else{
-        window.alert('You LOST the best of 5 match! SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
-        return;
-    }
+//     if (draws === 5 || wins == losses){
+//         window.alert('MATCH OVER. DRAW SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
+//         return;
+//     }
+//     else if(wins > losses){
+//         window.alert('You WON the best of 5 match! SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
+//         return;
+//     }
+//     else{
+//         window.alert('You LOST the best of 5 match! SCORE: ' + wins + ' - ' + draws + ' - ' + losses);
+//         return;
+//     }
 
-}
+// }
 
-gameBestOfFive();
+
+
+roundRPS(playerSelection(),computerPlay(random()));
