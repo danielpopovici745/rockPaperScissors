@@ -25,9 +25,7 @@ function random(){
     return Math.floor(Math.random()*3);
 }
 
-function playerSelection(){
-    let response = prompt("Rock,Paper,or Scissors!");
-
+function playerSelection(response){
     //If the user hits cancel when the prompt shows up it will alert the user they cancelled the game and will tell them to refresh to try again.
 
     if(response == null){
@@ -42,7 +40,6 @@ function playerSelection(){
     trying to get a valid response unless the user hits cancel*/
 
     while(!validResponse(response)){
-        response = prompt("Invalid Input! Please enter Rock, Paper or Scissors!");
         if(response == null){
             window.alert('Game Closing. Refresh to try again')
             return;
@@ -64,9 +61,10 @@ response == "rock" ? true : response == "paper" ? true : response == "scissors" 
 
 //returns if the user won or lost a round
 
-function roundRPS(playerSelection,computerSelection){
-
+function roundRPS(playerSelection,randomInt){
     //If the user hits cancel in the playerFunction() prompt then roundRPS will return undefined which will close the game.
+
+    computerSelection = computerPlay(randomInt);
 
     if (playerSelection === undefined){
         return;
@@ -212,6 +210,14 @@ function roundRPS(playerSelection,computerSelection){
 
 // }
 
+let playerRock = document.querySelector('#rock');
 
+let playerPaper = document.querySelector('#paper');
 
-roundRPS(playerSelection(),computerPlay(random()));
+let playerScissors = document.querySelector('#scissors');
+
+playerRock.addEventListener("click",function(){roundRPS('Rock',random())});
+
+playerPaper.addEventListener("click",function(){roundRPS('Paper',random())});
+
+playerScissors.addEventListener("click",function(){roundRPS('Scissors',random())});
