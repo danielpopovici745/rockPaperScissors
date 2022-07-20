@@ -2,18 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
     <title>Rock, Paper, Scissors!</title>
 </head>
 <body>
-    
-    <button id="rock">Rock!</button>
-    <button id="paper">Paper!
-    </button>
-    <button id="scissors">Scissors!</button>
-    <div id="results">Select one to play against the computer!</div>
-    <div id="runningScore">FIRST TO 5 WINS!</div>
-    <div id="bestOfResult"></div>
+    <div id="container">
+        <div id="buttonContainer">
+            <div id="buttonContent">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper
+            </button>
+                <button id="scissors">Scissors</button>
+            </div>
+        </div>
+        <div id="infoContainer">
+            <div id="infoContent">
+                <div id="results">Select one to play.</div>
+                <div id="runningScore">First to 5 wins.</div>
+                <div id="bestOfResult"></div>
+                <button id="restartButton">PLAY AGAIN?</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

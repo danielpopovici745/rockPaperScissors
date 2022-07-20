@@ -112,15 +112,17 @@ function bestOf5(roundResult){
 }
 
 function restartGame(){
-    const selectionButtons = document.querySelectorAll('button');
+    const selectionButtons = document.querySelectorAll('#buttonContent > button');
     let selectionButtonsArray = [...selectionButtons];
     selectionButtonsArray.forEach(div =>{
         div.disabled = true;
     })
-    const restartButton = document.createElement('button');
+    restartButton.removeAttribute("hidden");
     restartButton.addEventListener("click",() => window.location.reload());
     restartButton.textContent = 'PLAY AGAIN';
-    document.body.appendChild(restartButton);
+    let infoContent = document.querySelector("#infoContent");
+    restartButton.setAttribute("id","restartButton");
+    infoContent.appendChild(restartButton);
     
 
 }
@@ -135,6 +137,10 @@ let playerPaper = document.querySelector('#paper');
 let playerScissors = document.querySelector('#scissors');
 
 let matchResult = document.querySelector('#bestOfResult');
+
+let restartButton = document.querySelector('#restartButton');
+
+restartButton.setAttribute("hidden","hidden");
 
 playerRock.addEventListener("click",function(){bestOf5(roundRPS('Rock',random()))});
 
