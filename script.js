@@ -69,56 +69,54 @@ function roundRPS(playerSelection,randomInt){
     if (playerSelection === undefined){
         return;
     }
-    else{
-        console.log('You selected '+ playerSelection);
-    }
 
     /*check if the player selection wins, ties or lost against the computer
     selection based on what the player selected in playerSelection()*/
 
+    let div = document.querySelector('#results');
+    console.log(computerSelection);
     switch(playerSelection){
         case "Rock":
             if(computerSelection === 'Rock'){
-                console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+                div.textContent= `You DRAW! ${playerSelection} ties with ${computerSelection}`; 
                 return 'Draw';
             }
             else if(computerSelection == 'Paper'){
-                console.log("You lose! " + computerSelection +" beats " + playerSelection);
+                div.textContent= `You LOST! ${playerSelection} loses to ${computerSelection}`; 
                 return 'Loss';
             }
             else{
-                console.log("You win! " + playerSelection +" beats " + computerSelection);
+                div.textContent= `You WIN! ${playerSelection} beats ${computerSelection}`;
                 return 'Win'
             }
             break;
         case "Paper":
             if(computerSelection === 'Paper'){
-                console.log("You draw! " + playerSelection + " ties with " + computerSelection); 
+                div.textContent= `You DRAW! ${playerSelection} ties with ${computerSelection}`;
                 return 'Draw';
             }
             else if(computerSelection === 'Scissors'){
-                console.log("You lose! " + computerSelection + " beats " + playerSelection);
+                div.textContent= `You LOST! ${playerSelection} loses to ${computerSelection}`;
                 return 'Loss';
             }
             else{
-                console.log("You win! " + playerSelection +" beats " + computerSelection);
+                div.textContent= `You WIN! ${playerSelection} beats ${computerSelection}`;
                 return 'Win';
             }
             break;
         case "Scissors":
             if(computerSelection === 'Scissors'){
-                console.log("You draw! " + playerSelection + " ties with " + computerSelection);
+                div.textContent= `You DRAW! ${playerSelection} ties with ${computerSelection}`;
                 return 'Draw';
             }
             else if(computerSelection === 'Rock'){
-                console.log("You lose! " + computerSelection + " beats " + playerSelection);
+                div.textContent= `You LOST! ${playerSelection} loses to ${computerSelection}`;
                 return 'Loss';
             }
             else{
-                console.log("You win! " + playerSelection +" beats " + computerSelection);
+                div.textContent=`You WIN! ${playerSelection} beats ${computerSelection}`;
                 return 'Win';
             }
-            break;
     }
 }
 
@@ -221,3 +219,5 @@ playerRock.addEventListener("click",function(){roundRPS('Rock',random())});
 playerPaper.addEventListener("click",function(){roundRPS('Paper',random())});
 
 playerScissors.addEventListener("click",function(){roundRPS('Scissors',random())});
+
+
