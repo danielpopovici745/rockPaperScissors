@@ -39,7 +39,13 @@ button:active {
 }
 
 button:disabled{
-    display: none;
+    pointer-events: none;
+    color: #212121;
+    transition: color 0.3s ease 0.1s;
+    background-color: #212121;
+    transition: background-color 0.3s ease 0.1s ;
+    box-shadow: 0px 0px 0px;
+
 }
 
 #pageContainer{
@@ -86,5 +92,4 @@ button:disabled{
         font-size: 20px;
     }
 }
-
 
