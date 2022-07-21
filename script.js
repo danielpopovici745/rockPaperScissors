@@ -1,4 +1,4 @@
-//Daniel Popovici - rockPaperScissors - scrips.js
+//Daniel Popovici - rockPaperScissors - script.js
 
 // create a function that is the 'computer' for the user to play against
 
@@ -27,15 +27,14 @@ function random(){
 }
 
 
-//returns if the user won or lost a round
+//returns the result of a round of rockpaperscissors (Win Loss Draw)
 
 function roundRPS(playerSelection){
-    //If the user hits cancel in the playerFunction() prompt then roundRPS will return undefined which will close the game.
 
-    computerSelection = computerPlay(random());
+    let computerSelection = computerPlay(random());
 
     /*check if the player selection wins, ties or lost against the computer
-    selection based on what the player selected in playerSelection()*/
+    based on what button the player clicked on*/
 
     let div = document.querySelector('#results');
 
@@ -83,10 +82,12 @@ function roundRPS(playerSelection){
     }
 }
 
-
+//checks the value of roundResult from roundRPS() and outputs the current score of the match
 
 function bestOf5(roundResult){
+
     let bestOfScore = document.querySelector('#runningScore');
+
     if(roundResult =='Loss'){
         loses +=1;
         bestOfScore.textContent = `Score: ${wins} - ${loses} (W - L)`;
@@ -111,20 +112,25 @@ function bestOf5(roundResult){
     }
 }
 
+//make the restartButton appear so the user can restart the match (refreshes the page)
+
 function restartGame(){
+
     const selectionButtons = document.querySelectorAll('#buttonContent > button');
+    const infoContent = document.querySelector("#infoContent");
+
     let selectionButtonsArray = [...selectionButtons];
+
     selectionButtonsArray.forEach(div =>{
         div.disabled = true;
     })
+
     restartButton.removeAttribute("hidden");
     restartButton.addEventListener("click",() => window.location.reload());
     restartButton.textContent = 'PLAY AGAIN';
-    let infoContent = document.querySelector("#infoContent");
+    
     restartButton.setAttribute("id","restartButton");
     infoContent.appendChild(restartButton);
-    
-
 }
 let wins = 0;
 let draws = 0;
@@ -147,35 +153,3 @@ playerRock.addEventListener("click",function(){bestOf5(roundRPS('Rock',random())
 playerPaper.addEventListener("click",function(){bestOf5(roundRPS('Paper',random()))});
 
 playerScissors.addEventListener("click",function(){bestOf5(roundRPS('Scissors',random()))});
-
-// if (roundsLeft == 2){
-
-//     /*check if wins or losses equal 3 because 3-0-0 or 0-0-3 leaves 
-//     the losing side with only 2 rounds left unable to win or draw*/
-
-//     if(wins ==3 || losses == 3){
-//         break;
-//     }
-// }
-
-// if(roundsLeft == 1){
-    
-//     /* must check these conditions to end game if unable to win 
-//     or draw state for player or computer*/
-
-//     if((draws == 0 || draws == 1) && (wins == 3 || losses == 3)){
-        
-//         break;
-
-//     }
-
-//     /* need to make sure wins or losses equals 2 before ending the game
-//     because the losing side cannont draw or win with only 1 round left with 2 draws and wins/losses.*/
-
-//     else if(draws == 2){                
-//         if(wins == 2 || losses == 2){
-//             break;
-//         }
-//     }
-// }
-

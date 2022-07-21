@@ -37,7 +37,7 @@ button:hover {
 button:active {
     transform: translateY(-1px);
 }
-#container{
+#pageContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
